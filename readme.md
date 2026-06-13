@@ -15,7 +15,7 @@ This project involves the design, architecture, and structural implementation of
   - **Users ↔ Bookings:** Mapped a single user to multiple booking logs (`One` side on Users, `Many` side on Bookings).
   - **Matches ↔ Bookings:** Linked a single football match to multiple ticket purchases (`One` side on Matches, `Many` side on Bookings).
 - Ensured a logical **One-to-One (1:1)** row configuration where each individual record in the bookings table maps exactly one unique user to a specific match and seat choice.
-- **Live ERD Link:** [](https://lucid.app/lucidchart/2fa81066-8524-4c6c-8b6a-69ca609f56aa/edit?viewport_loc=-1883%2C-1254%2C3231%2C1509%2C0_0&invitationId=inv_61c7a397-c412-4b77-b125-07ef9f1adf78)
+- **Live ERD Link:** (https://lucid.app/lucidchart/2fa81066-8524-4c6c-8b6a-69ca609f56aa/edit?viewport_loc=-1883%2C-1254%2C3231%2C1509%2C0_0&invitationId=inv_61c7a397-c412-4b77-b125-07ef9f1adf78)
 
 ### 2. Physical Schema & DDL Implementation
 
