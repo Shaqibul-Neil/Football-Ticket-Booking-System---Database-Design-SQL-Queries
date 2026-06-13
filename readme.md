@@ -15,7 +15,7 @@ This project involves the design, architecture, and structural implementation of
   - **Users ↔ Bookings:** Mapped a single user to multiple booking logs (`One` side on Users, `Many` side on Bookings).
   - **Matches ↔ Bookings:** Linked a single football match to multiple ticket purchases (`One` side on Matches, `Many` side on Bookings).
 - Ensured a logical **One-to-One (1:1)** row configuration where each individual record in the bookings table maps exactly one unique user to a specific match and seat choice.
-- **Live ERD Link:** (https://lucid.app/lucidchart/2fa81066-8524-4c6c-8b6a-69ca609f56aa/edit?viewport_loc=-1883%2C-1254%2C3231%2C1509%2C0_0&invitationId=inv_61c7a397-c412-4b77-b125-07ef9f1adf78)
+- **Live ERD Link:** (https://drawsql.app/teams/shaqibul-islam/diagrams/football-ticket-booking-system)
 
 ### 2. Physical Schema & DDL Implementation
 
@@ -26,7 +26,6 @@ This project involves the design, architecture, and structural implementation of
   - `UNIQUE` constraint on emails to prevent duplicate accounts.
   - `CHECK` constraints to restrict invalid statuses (e.g., specific roles, payment status, and match availability).
   - Preventive constraints (`>= 0`) to guarantee no negative pricing values.
-  - Enabled `ON DELETE CASCADE` to maintain database cleanup when records are removed.
 
 ### 3. Mock Data Seeding
 
@@ -42,6 +41,7 @@ Developed 7 business-critical SQL scripts utilizing advanced relational operatio
 - **Relational Joins:** Engineered `INNER JOIN` matrices and cross-sectional `LEFT JOIN` operations to extract unified insights while preserving rows of inactive customers.
 - **Advanced Aggregations:** Utilized non-correlated subqueries to isolate above-average high-ticket transactions.
 - **Offset Pagination:** Applied advanced sorting using `LIMIT` and `OFFSET` clauses to securely handle optimized web-app pagination.
+- **Modular Functional Programming (UDFs):** Engineered custom User-Defined Functions (get_total() and get_above_average_bookings()) encapsulating computational logic to dynamically filter records, eliminating hardcoded queries and showcasing scalable modular database engineering.
 
 ---
 
