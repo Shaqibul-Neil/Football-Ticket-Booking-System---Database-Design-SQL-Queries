@@ -208,3 +208,52 @@ SELECT
   COALESCE (payment_status,'Action Required') AS systematic_status
 FROM
   bookings where payment_status IS NULL;
+
+--Query 4: Retrieve match booking details along with the User's full name and the scheduled Match fixture teams.
+SELECT
+  b.booking_id,
+  u.full_name,
+  m.fixture,
+  b.total_cost
+FROM
+  bookings AS b
+  INNER JOIN users AS u ON b.user_id = u.user_id
+  INNER JOIN matches AS m ON b.match_id = m.match_id;
+
+--Query 5: Display a comprehensive list of all users and their booking IDs, ensuring that fans who have never bought a ticket are still listed.
+SELECT
+  u.user_id,
+  u.full_name,
+  b.booking_id
+FROM
+  users AS u
+  LEFT JOIN bookings AS b ON u.user_id = b.user_id;
+
+
+
+--Query 6: Find all ticket bookings where the total cost is strictly higher than the average cost of all ticket bookings.
+
+CREATE FUNCTION get_total () returns INT LANGUAGE SQL AS $$ SELECT round(avg(total_cost)) from bookings $$;
+
+CREATE FUNCTION get_above_average_bookings () RETURNS TABLE (booking_id INT, match_id INT, total_cost NUMERIC) LANGUAGE SQL AS $$
+  SELECT booking_id,match_id,total_cost FROM bookings WHERE total_cost > get_total()
+  $$;
+
+SELECT
+  *
+FROM
+  get_above_average_bookings ();
+
+  --Query 7: Retrieve the top 2 most expensive matches sorted by base ticket price, skipping the absolute highest premium match.
+SELECT
+  match_id,
+  fixture,
+  base_ticket_price
+FROM
+  MATCHES
+ORDER BY
+  base_ticket_price DESC
+LIMIT
+  2
+OFFSET
+  1;
